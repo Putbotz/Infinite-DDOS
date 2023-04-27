@@ -62,10 +62,16 @@ class Requests:
                     
                     if response_content["status"] == "False":
                         print(f"{Fore.RED}[ATTACK]{Fore.RED}{Fore.RESET} {response_content['message']}")
-                    return True 
+                    elif response_content["True"]:
+                        print(f"{Fore.GREEN}[ATTACK]{Fore.GREEN}{Fore.RESET} Attack has started on {new_url}")
+                    else:
+                        return False
+                    
                 else:
+                    if response.status_code == "403":
+                        print(f"{Fore.RED}[CLOUDFLARE]{Fore.RED}{Fore.RESET} CloudFlare has blocked our request")
                     return False
             
         except Exception as e:
-            print(e)
+            print(f"{Fore.RED}[ERROR]{Fore.RED}{Fore.RESET} {e}")
             return False
