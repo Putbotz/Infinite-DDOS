@@ -1,5 +1,6 @@
 import json
 import httpx
+import sys, os
 
 from colorama import *
 from helpers.data import get
@@ -9,7 +10,7 @@ init(convert=True)
 httpx_client: object = httpx.Client(timeout=None) 
 
 class Attack:        
-    def start(self, website: str, method: str) -> bool:
+    async def start(self, website: str, method: str) -> bool:
         try:
             if method.lower() != "https" and method.lower() != "http":
                 return False
