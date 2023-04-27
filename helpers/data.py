@@ -2,7 +2,7 @@ from colorama import *
 
 class get:
     def attack_headers(cookie: str, user_agent) -> dict:
-        print(f"{Fore.GREEN}[DATA]{Fore.GREEN}{Fore.RESET} Fetching attack headers for attack")
+        print(f"{Fore.GREEN}[FETCHING DATA]{Fore.GREEN}{Fore.RESET} Fetching attack headers for attack")
         
         return {
             'accept': '*/*',
@@ -23,7 +23,7 @@ class get:
             'x-requested-with': 'XMLHttpRequest' }
         
     def attack_payload(website_url: str) -> dict:
-        print(f"{Fore.GREEN}[DATA]{Fore.GREEN}{Fore.RESET} Fetching attack payload for attack")
+        print(f"{Fore.GREEN}[FETCHING DATA]{Fore.GREEN}{Fore.RESET} Fetching attack payload for attack")
         
         return {
             'startAttack': '1',
