@@ -1,3 +1,4 @@
+import json
 import httpx
 
 from colorama import *
@@ -57,7 +58,10 @@ class Requests:
 
                 if response.status_code == 200:
                     response_content: str = response.content.decode("utf-8")
-                    print(response_content)
+                    response_content: dict = json.loads(response_content)
+                    
+                    if response_content["status"] == "False":
+                        print(f"{Fore.RED}[ATTACK]{Fore.RED}{Fore.RESET} {response_content['message']}")
                     return True 
                 else:
                     return False
