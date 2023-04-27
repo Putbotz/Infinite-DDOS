@@ -63,7 +63,7 @@ class Requests:
                     
                     if response_content["status"] == "False":
                         print(f"{Fore.RED}[ATTACK]{Fore.RED}{Fore.RESET} {response_content['message']}")
-                    elif response_content["True"]:
+                    elif response_content["status"] == "True":
                         print(f"{Fore.GREEN}[ATTACK]{Fore.GREEN}{Fore.RESET} Attack has started on {new_url}")
                     else:
                         return False
