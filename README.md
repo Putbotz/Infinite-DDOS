@@ -9,7 +9,7 @@ Infinite DDOS is a DDOS tool created with Python that utilizes stresser.su's fre
 Create an account on https://stresser.su/, this is the website that has a free to use plan that is powerful enough to take down alot of websites.
 
 ### Step Two:
-We now need to get our Cookies (🍪 Yummm..) from the site which will allow us to use the site in our program without us having to do anything, remember cookies are a way to access your account so don't share them with anyone, heres how to get your cookies:
+We now need to get our Cookie (🍪 Yummm..) from the site which will allow us to use the site in our program without us having to do anything, remember cookie are a way to access your account so don't share them with anyone, heres how to get your cookie:
 
 ![App Screenshot](https://raw.githubusercontent.com/NotKatsu/Infinite-DDOS/main/images/Untitled.png)
 
