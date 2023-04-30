@@ -23,7 +23,7 @@ class Stresser:
         
 if __name__ == "__main__":  
     stresser_object: object = Stresser(cookie="")
-    result: dict = Stresser.get_information()
+    result: dict = stresser_object.get_information()
 
     while True:
         asyncio.run(stresser_object.run(result=result))
